@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    <style>
+    #map {
+        width: 1340px;
+        height: 540px;
+    }
+
+    header {
+        background-color: rgb(104, 85, 85);
+        text-align: center;
+        color: rgb(255, 255, 255);
+        padding: 21px;
+        font-size: 25px;
+        width: 1300px;
+    }
+    </style>
+</head>
+<body>
+    <img src="">
+    <header>PERSEBARAN MASJID WILAYAH BANGUNTAPAN
+        <br>
+        " SAFARI RAMADHAN KELILING "
+        <br>
+        <img src="">
+    </header>
+    <div id="map"></div>
+    <script>
+            var map = L.map('map').setView([-7.823950, 110.406953], 13)
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap'
+        }).addTo(map) ;
+
+        var MASJID = L.icon({
+        iconUrl:'https://cdn-icons-png.flaticon.com/512/2849/2849761.png',
+        iconSize:[30,30],
+        iconAnchor:[15,15],
+    }) ;
+    var RUMAH = L.icon({
+        iconUrl:'https://cdn-icons-png.flaticon.com/512/2544/2544087.png',
+        iconSize:[20,20],
+        iconAnchor:[10,10],
+    }) ; 
+        var marker = L.marker([-7.792645, 110.414030], {icon:RUMAH}).bindPopup ('RUMAH').addTo(map);
+        var marker = L.marker([-7.798555919007291, 110.39940422346777], {icon:MASJID}).bindPopup ('MASJID PATHOK NEGARA ADDAROJAT BABADAN' + "<br><button onclick='return rute(-7.798555919007291, 110.39940422346777)' >Rute</button>").addTo(map);
+        var marker = L.marker([-7.811055335719477, 110.40699239685442], {icon:MASJID}).bindPopup ('MASJID AL-ITTIHAD KETANDAN RAYA BANGUNTAPAN' + "<br><button onclick='return rute(-7.811055335719477, 110.40699239685442)' >Rute</button>").addTo(map);
+        var marker = L.marker([-7.803740619931292, 110.41589834740986], {icon:MASJID}).bindPopup ('MASJID AL-MUTHIIN' + "<br><button onclick='return rute(-7.803740619931292, 110.41589834740986)' >Rute</button>").addTo(map);
+        var marker = L.marker([-7.8220638505579005, 110.42325185034396], {icon:MASJID}).bindPopup ('MASJID SUNAN AMPEL' + "<br><button onclick='return rute(-7.8220638505579005, 110.42325185034396)' >Rute</button>").addTo(map);
+        var marker = L.marker([-7.854747154264395, 110.40801885382241], {icon:MASJID}).bindPopup ('MASJID BAITUSALLAM' + "<br><button onclick='return rute(-7.854747154264395, 110.40801885382241)' >Rute</button>").addTo(map);
+        var marker = L.marker([-7.792310150431482, 110.389218839651696], {icon:MASJID}).bindPopup ('MASJID JAMI AL-FATAH' + "<br><button onclick='return rute(-7.792310150431482, 110.389218839651696)' >Rute</button>").addTo(map);
+        var marker = L.marker([-7.8269545516541825, 110.39762722701802], {icon:MASJID}).bindPopup ('MASJID PERAK KOTAGEDE' + "<br><button onclick='return rute(-7.8269545516541825, 110.39762722701802)' >Rute</button>").addTo(map);
+        var marker = L.marker([-7.835885900753947, 110.40848326914411], {icon:MASJID}).bindPopup ('MASJID DAARUL UMMAH' + "<br><button onclick='return rute(-7.835885900753947, 110.40848326914411)' >Rute</button>").addTo(map);
+        var marker = L.marker([-7.83450853077665, 110.38300554982237], {icon:MASJID}).bindPopup ('MASJID ISLAMIC CENTER UAD' + "<br><button onclick='return rute(-7.83450853077665, 110.38300554982237)' >Rute</button>").addTo(map);
+        var marker = L.marker([-7.845098822002082, 110.40279707648646], {icon:MASJID}).bindPopup ('MASJID NURUL HUDA 19' + "<br><button onclick='return rute(-7.845098822002082, 110.40279707648646)' >Rute</button>").addTo(map);
+
+
+        var control = L.Routing.control({
+        waypoints: [
+        L.latLng(-7.792645, 110.414030),
+        L.latLng(-7.854747154264395, 110.40801885382241)]
+        }).addTo(map);
+
+            function rute(lat,lng){
+                var latLng = L.latLng(lat,lng)
+                control.spliceWaypoints(control.getWaypoints().length - 1, 1, latLng);
+            }
+
+    </script>
+</body>
+</html>
